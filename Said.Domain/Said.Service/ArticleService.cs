@@ -104,7 +104,7 @@ namespace Said.Service
         /// <returns></returns>
         public IPagedList<Article> FindByDateDesc(Page page, Expression<Func<Article, bool>> where, Expression<Func<Article, DateTime>> order)
         {
-            var results = Context.Article.Include("Image.Song").OrderByDescending(order).Where(where).GetPage(page).ToList();
+            var results = Context.Article.Include("Image").Include("Song.Image").OrderByDescending(order).Where(where).GetPage(page).ToList();
             int total = Context.Article.Count(where);
             return new StaticPagedList<Article>(results, page.PageNumber, page.PageSize, total);
         }

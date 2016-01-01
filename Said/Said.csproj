@@ -349,7 +349,7 @@
     <Content Include="Content\Images\UEDImg\MacWinLinux2.png" />
     <Content Include="Content\Images\UEDImg\Paris-France.jpg" />
     <Content Include="Content\Images\bg\Reine-Norway.jpg" />
-    <Content Include="Content\Images\UEDImg\said-banner.jpg" />
+    <Content Include="Content\Images\bg\said-banner.jpg" />
     <Content Include="Content\Images\UEDImg\SutjezkaNP_ZH-CN10008358917_1366x768.jpg" />
     <Content Include="Content\Images\UEDImg\test.png" />
     <Content Include="Content\Images\UEDImg\Tuscany-Italy3.jpg" />
@@ -368,7 +368,6 @@
     <Content Include="Content\Style\Global.css" />
     <Content Include="Content\Style\index.css" />
     <Content Include="Content\Style\layout.css" />
-    <Content Include="Content\Style\said.css" />
     <Content Include="Content\Style\saidList.css" />
     <Content Include="Content\Widget\sweetalert\sweetalert-dev.js" />
     <Content Include="Content\Widget\sweetalert\sweetalert.css" />
@@ -563,6 +562,7 @@
     <Content Include="Views\Said\Article.cshtml" />
     <Content Include="Content\Style\sass\saidlist.scss" />
     <Content Include="Views\Said\Index.cshtml" />
+    <Content Include="Content\Style\sass\saiddetail.scss" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

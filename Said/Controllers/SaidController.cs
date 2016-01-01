@@ -34,7 +34,7 @@ namespace Said.Controllers
                 PageNumber = index / PageLimit + 1,
                 PageSize = PageLimit
             };
-            IPagedList<Article> list = ArticleApplication.Find(page);
+            IPagedList<Article> list = ArticleApplication.FindByDateDesc(page);
             ViewData["total"] = list.TotalItemCount;
             ViewData["articles"] = list.ToList<Article>();
             ViewData["pageIndex"] = index;
@@ -50,7 +50,11 @@ namespace Said.Controllers
         /// <returns></returns>
         public ActionResult Article(string id)
         {
-            return View();
+            ViewData["NavigatorIndex"] = 2;
+            var model = ArticleApplication.Find(id);
+            if (model == null)
+                return View("Error");
+            return View(model);
         }
         #endregion
 

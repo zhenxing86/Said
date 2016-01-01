@@ -541,10 +541,10 @@
             return 0;
         },
         //转换一个秒数到时间，例如：60 => 00:01:00
-        parseTime: function (value) {
+        parseTime: function (value, format) {
             var date = new Date(_dateEnum[0], _dateEnum[1], _dateEnum[2], _dateEnum[3], _dateEnum[4], _dateEnum[5]);
             date.setSeconds(value);
-            return so.dateFormat(date, 'HH:mm:ss');
+            return so.dateFormat(date, format || 'HH:mm:ss');
         },
         parseBit: function (value) {
             //转换一个字节单位到合适阅读的单位

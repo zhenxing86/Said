@@ -34,28 +34,36 @@ namespace Said
         /// <returns></returns>
         public static string DateToLocal(DateTime date)
         {
-            TimeSpan timespan = DateTime.Now - date;
+            DateTime now = DateTime.Now;
+            TimeSpan timespan = now - date;
             if (timespan.TotalSeconds < 60)
             {
                 return "刚才";
             }
-            if (timespan.TotalMinutes < 60)
-            {
-                return "1小时";
-            }
-            if (timespan.TotalDays < 1 && timespan.Days < 1)
+            if (timespan.TotalDays < 1 && now.Day == date.Day)
             {
                 return date.ToString("今天 HH:mm");
             }
-            if (timespan.TotalDays < 2 && timespan.Days < 2)
+            if (timespan.TotalDays < 2 && now.Day - date.Day == 1)
             {
                 return date.ToString("昨天 HH:mm");
             }
-            if (timespan.TotalDays < 3 && timespan.Days < 3)
+            if (timespan.TotalDays < 3 && now.Day - date.Day == 2)
             {
                 return date.ToString("前天 HH:mm");
             }
             return date.ToString("yyyy-MM-dd HH:mm");
+        }
+
+
+        static DateTime FixedkDate = new DateTime(2016, 1, 1, 0, 0, 0);
+        /// <summary>
+        /// 转换秒数到时间
+        /// </summary>
+        /// <param name="duration"></param>
+        public static string ConverDuration(int duration)
+        {
+            return FixedkDate.AddSeconds(duration).ToString("mm:ss");
         }
     }
 }

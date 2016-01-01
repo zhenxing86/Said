@@ -18,6 +18,7 @@
     }
     <meta name="author" content="linkFly" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    @*<meta http-equiv-"x-ua-compatible" content="IE =9" />*@ 
     <title>@ViewBag.Title</title>
     <link href="@Url.Content("~/Content//Style/Global.css?v=1.0")" rel="stylesheet">
     <link href="@Url.Content("~/Content/Style/font-awesome.min.css?v=1.0")" rel="stylesheet">
@@ -26,6 +27,7 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="bookmark" href="/favicon.ico" />
     <script src="@Url.Content("~/Content/Back/JavaScript/requirejs-2.1.15.js?v=1.0")"></script>
+    <script src="@Url.Content("~/Content/JavaScript/require.config.js?v=1.0")"></script>
     @{
         if (IsSectionDefined("Css"))
         {
@@ -76,39 +78,46 @@
                 </header>
                 @RenderBody()
             </section>
-            <footer id="footer">
-                <section id="footer-content">
-                    <dl>
-                        <dt>推荐</dt>
-                        <dd>
-                            <ul class="footer-recm">
-                                <li><a target="_blank" href="http://www.cnblogs.com/">博客园 - 开发者的网上家园</a></li>
-                                <li><a target="_blank" href="http://www.zhangxinxu.com/php/">张鑫旭的个人博客</a></li>
-                                <li><a target="_blank" href="http://www.cnblogs.com/rubylouvre/">司徒正美个人博客 - 博客园</a></li>
-                                <li><a target="_blank" href="https://github.com/linkFly6">Github - linkFly</a></li>
-                            </ul>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            许可
-                        </dt>
-                        <dd>
-                            本站原创并且没有注明相关许可协议的内容，默认均采用<a href="http://creativecommons.org/licenses/by/3.0/cn/" target="_blank">《知识共享署名 3.0 中国大陆许可协议》</a>进行许可。非原创内容遵循原文许可协议。
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            联系方式
-                        </dt>
-                        <dd>内容基本都是自己原创的，引用的地方都会给出相关引用，如有疏漏，联系方式：</dd>
-                        <dd>linkFly6#live.com（#替换成@@）</dd>
-                    </dl>
-                    <!--页脚替换到当前时间-->
-                    <div class="footer-copyright">©2014&nbsp;linkFly&nbsp;-&nbsp;Said:听说&nbsp;&nbsp;京ICP备13014059号</div>
-                </section>
+            if (IsSectionDefined("overrideFooter"))
+            {
+                @RenderSection("overrideFooter")
+            }
+            else
+            {
+                <footer id="footer">
+                    <section id="footer-content">
+                        <dl>
+                            <dt>推荐</dt>
+                            <dd>
+                                <ul class="footer-recm">
+                                    <li><a target="_blank" href="http://www.cnblogs.com/">博客园 - 开发者的网上家园</a></li>
+                                    <li><a target="_blank" href="http://www.zhangxinxu.com/php/">张鑫旭的个人博客</a></li>
+                                    <li><a target="_blank" href="http://www.cnblogs.com/rubylouvre/">司徒正美个人博客 - 博客园</a></li>
+                                    <li><a target="_blank" href="https://github.com/linkFly6">Github - linkFly</a></li>
+                                </ul>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>
+                                许可
+                            </dt>
+                            <dd>
+                                本站原创并且没有注明相关许可协议的内容，默认均采用<a href="http://creativecommons.org/licenses/by/3.0/cn/" target="_blank">《知识共享署名 3.0 中国大陆许可协议》</a>进行许可。非原创内容遵循原文许可协议。
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>
+                                联系方式
+                            </dt>
+                            <dd>内容基本都是自己原创的，引用的地方都会给出相关引用，如有疏漏，联系方式：</dd>
+                            <dd>linkFly6#live.com（#替换成@@）</dd>
+                        </dl>
+                        <!--页脚替换到当前时间-->
+                        <div class="footer-copyright">©2014&nbsp;linkFly&nbsp;-&nbsp;Said:听说&nbsp;&nbsp;京ICP备13014059号</div>
+                    </section>
 
-            </footer>
+                </footer>
+            }
         }
     }
     <script src="@Url.Content("~/Content/JavaScript/jQuery-2.1.1.js?v=1.0")"></script>
