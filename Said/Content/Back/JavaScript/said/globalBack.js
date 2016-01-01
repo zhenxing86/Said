@@ -1,18 +1,15 @@
-﻿(function (window, undefined) {
-    var so = window.so,
-        $ = window.jQuery,
-        document = window.document,
-        avalon = window.avalon,
+﻿define('said', ['so', 'jquery', 'avalon'], function (so, $, avalon) {
+    var document = window.document,
         said = {},
-        //绑定导航
-        bindNavigation = function ($content, keyClass, openClass) {
-            $content.find('.' + keyClass).each(function () {
-                var $this = $(this);
-                $(this.firstElementChild).click(function () {
-                    $this.toggleClass(openClass);
-                });
+    //绑定导航
+    bindNavigation = function ($content, keyClass, openClass) {
+        $content.find('.' + keyClass).each(function () {
+            var $this = $(this);
+            $(this.firstElementChild).click(function () {
+                $this.toggleClass(openClass);
             });
-        };
+        });
+    };
     /*************************************************************************************
                                 通用页面组件
     **************************************************************************************/
@@ -43,21 +40,34 @@
     **************************************************************************************/
 
 
-
-    said.ajax = function (url, data) {
-        //jQuery.ajax的浅warpper
-        return $.ajax(typeof url === 'object' ?
-            url : {
-                url: url,
-                type: "post",
-                //contentType: "application/json; charset=utf-8",
-                //contentType: "application/json", //jQuery默认头是提交表单的："application/x-www-form-urlencoded; charset=UTF-8"
-                dataType: "json",
-                data: data //注意对内容进行编码
-            });
+    return {
+        ajax: function (url, data) {
+            //jQuery.ajax的浅warpper
+            return $.ajax(typeof url === 'object' ?
+                url : {
+                    url: url,
+                    type: "post",
+                    //contentType: "application/json; charset=utf-8",
+                    //contentType: "application/json", //jQuery默认头是提交表单的："application/x-www-form-urlencoded; charset=UTF-8"
+                    dataType: "json",
+                    data: data //注意对内容进行编码
+                });
+        },
+        dialog: new function () {
+            var $saidModal = $('#said-g-modal'),//模态对话框
+                $modalTitle = $('#said-g-modal-title'),
+                $modalBody = $('#said-g-modal-body');
+            return function (title, context) {
+                if (context == null && title != null)
+                    $modalBody.html(title);
+                else {
+                    $modalTitle.html(title || '');
+                    $modalBody.html(context || '');
+                }
+                return $saidModal.modal('show');
+            };
+        }
     };
-
-    window.said = said;
 
 
     /*************************************************************************************
@@ -67,4 +77,5 @@
 
     //window.$window = $(window);
     //window.$document = $(document);
-})(window);
+
+});

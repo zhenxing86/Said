@@ -163,6 +163,15 @@ namespace Said.Application
         }
 
         /// <summary>
+        /// 无条件贪婪查询全部，并按照时间倒序排列
+        /// </summary>
+        /// <returns></returns>
+        public static IEnumerable<Song> FindAllByDesc()
+        {
+            return Context.FindAllByDesc();
+        }
+
+        /// <summary>
         /// 分页查询返回多条
         /// </summary>
         /// <param name="page"></param>

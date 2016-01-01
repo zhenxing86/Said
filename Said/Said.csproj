@@ -285,6 +285,7 @@
     <Content Include="Content\Back\Style\said-said.css" />
     <Content Include="Content\Back\Style\index.css" />
     <Content Include="Content\Back\Style\saidCenter.css" />
+    <Content Include="Content\Back\Style\saidList.css" />
     <Content Include="Content\Font\fontawesome-webfont.svg" />
     <Content Include="Content\Images\code-bg.jpg" />
     <Content Include="Content\Images\github.png" />
@@ -367,6 +368,9 @@
     <Content Include="Content\Style\layout.css" />
     <Content Include="Content\Style\said.css" />
     <Content Include="Content\Style\saidList.css" />
+    <Content Include="Content\Widget\sweetalert\sweetalert-dev.js" />
+    <Content Include="Content\Widget\sweetalert\sweetalert.css" />
+    <Content Include="Content\Widget\sweetalert\sweetalert.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Source\Sys\Images\Icons\default.png" />
@@ -552,6 +556,8 @@
     <Content Include="Content\Back\Style\sass\login.scss" />
     <Content Include="Content\Back\Style\sass\pageConfig.scss" />
     <Content Include="Content\Back\Style\pageConfig.css.map" />
+    <Content Include="Content\Back\Style\sass\addSaid.scss" />
+    <Content Include="Content\Back\Style\addSaid.css.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

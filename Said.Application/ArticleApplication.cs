@@ -47,27 +47,12 @@ namespace Said.Application
             //防止tag有HTML标签，修正
             if (!string.IsNullOrWhiteSpace(model.STag))
                 model.STag = HTMLCommon.HTMLTrim(model.STag);
+            //model.Song = SongApplication.Context.GetById(model.SongId);//检索有没有歌曲信息
+            if (SongApplication.Context.GetById(model.SongId) == null)
+                str.Append("歌曲信息不正确(不可获取),");
+            if (ImageApplication.Context.GetById(model.ImageId) == null)
+                str.Append("缩略图信息不正确(不可获取),");
 
-            //修正model数据
-            if (string.IsNullOrWhiteSpace(model.SongId))//没有歌曲id则验证歌曲图片是否存在
-            {
-                if (model.Song != null)
-                {
-                    model.Song.SongId = Guid.NewGuid().ToString();//创建一个歌曲ID
-                    //检测歌曲文件名，没有/不合法 则生成一个新的
-                    if (string.IsNullOrWhiteSpace(model.SName) || SongApplication.FindByFileName(model.SName.Trim()) != null)
-                        model.Song.SongFileName = FileCommon.CreateFileNameByTime();
-                }
-            }
-            else//如果有歌曲id则检索数据库
-            {
-                //model.Song = SongApplication.Context.GetById(model.SongId);//检索有没有歌曲信息
-                if (SongApplication.Context.GetById(model.SongId) == null)
-                    str.Append("歌曲信息不正确(不可获取),");
-            }
-
-            if (ClassifyApplication.Context.GetById(model.ClassifyId) == null)
-                str.Append("分类信息不正确,");
             foreach (var validateResult in model.Validate())
             {
                 //validateResult.MemberNames//这个要搞懂怎么用，或许能让提示信息更全一点
@@ -111,13 +96,22 @@ namespace Said.Application
         }
 
         /// <summary>
+        /// 查找所有Said的文件名称（用于防止重名的业务）
+        /// </summary>
+        /// <returns></returns>
+        public static IEnumerable<string> FindAllFileNames()
+        {
+            return Context.GetFileNames();
+        }
+
+        /// <summary>
         /// 分页查询
         /// </summary>
         /// <param name="page">分页对象</param>
         /// <returns>返回封装后的IPagedList对象</returns>
         public static IPagedList<Article> Find(Models.Data.Page page)
         {
-            return Context.GetPageDesc(page, m => m.STitle != null, m => m.SDate);
+            return Context.GetPageDesc(page, m => m.STitle != null, m => m.Date);
         }
 
         /// <summary>
@@ -128,7 +122,7 @@ namespace Said.Application
         /// <returns>返回封装后的IPagedList对象</returns>
         public static IPagedList<Article> Find(Models.Data.Page page, string keywords)
         {
-            return Context.GetPageDesc(page, m => m.STitle.Contains(keywords) || m.SContext.Contains(keywords), m => m.SDate);
+            return Context.GetPageDesc(page, m => m.STitle.Contains(keywords) || m.SContext.Contains(keywords), m => m.Date);
         }
         #endregion
     }

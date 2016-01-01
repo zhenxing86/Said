@@ -71,21 +71,21 @@ namespace Said.Models
         /// </summary>
         public bool SIsTop { get; set; }
         /// <summary>
-        /// 缩略图（裁剪过后缩放的）
+        /// 缩略图
         /// </summary>
-        public string SImgTrim { get; set; }
+        public virtual Image Image { get; set; }
+
         /// <summary>
-        /// 缩略图（大图）
+        /// 缩略图ID
         /// </summary>
-        public string SImg { get; set; }
+        public string ImageId { get; set; }
+
+
         /// <summary>
         /// 文章HTML
         /// </summary>
         public string SHTML { get; set; }
-        /// <summary>
-        /// 文章发表时间
-        /// </summary>
-        public DateTime SDate { get; set; }
+
         /// <summary>
         /// JS（如果有的话）
         /// </summary>
@@ -109,16 +109,25 @@ namespace Said.Models
         /// 点击量
         /// </summary>
         public int SClick { get; set; }
-        /// <summary>
-        /// 类型ID
-        /// </summary>
-        public string ClassifyId { get; set; }
+        ///// <summary>
+        ///// 类型ID
+        ///// </summary>
+        //public string ClassifyId { get; set; }
+
+        ///// <summary>
+        ///// 类型对象
+        ///// </summary>
+        //public virtual Classify Classify { get; set; }
 
         /// <summary>
-        /// 类型对象
+        /// 访问密码
         /// </summary>
-        public virtual Classify Classify { get; set; }
+        public string Password { get; set; }
 
+        /// <summary>
+        /// 是否私有
+        /// </summary>
+        public int IsPrivate { get; set; }
 
         /// <summary>
         /// 歌曲ID
@@ -138,14 +147,6 @@ namespace Said.Models
                 yield return new ValidationResult("标题不允许为空");
             if (string.IsNullOrWhiteSpace(SSummary))
                 yield return new ValidationResult("描述不允许为空");
-            if (string.IsNullOrWhiteSpace(SImg))
-                yield return new ValidationResult("图片不允许为空");
-            if (string.IsNullOrWhiteSpace(STag))
-                yield return new ValidationResult("标签不允许为空");
-            if (Classify == null && string.IsNullOrEmpty(ClassifyId))
-                yield return new ValidationResult("分类信息不允许为空");
-            if (Song == null && string.IsNullOrEmpty(SongId))
-                yield return new ValidationResult("歌曲信息不正确");
             else if (Song != null)
             {
                 if (string.IsNullOrWhiteSpace(Song.ImageId))

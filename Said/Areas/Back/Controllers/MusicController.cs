@@ -60,12 +60,13 @@ namespace Said.Areas.Back.Controllers
         /// <returns></returns>
         public JsonResult GetAllMusicList()
         {
-            var res = SongApplication.FindToList().ToList<Song>();
-            return Json(new
+            var res = SongApplication.FindAllByDesc().ToList<Song>();
+            var jsonResult = Json(new
             {
                 total = res.Count,
                 datas = res
             }, JsonRequestBehavior.AllowGet);
+            return jsonResult;
         }
         #endregion
 

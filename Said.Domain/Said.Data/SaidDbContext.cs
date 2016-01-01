@@ -13,8 +13,11 @@ namespace Said.Domain.Said.Data
         public SaidDbContext(string databaseName = "SaidEntities")
             : base(databaseName)
         {
+            //关闭延迟加载
+            //this.Configuration.LazyLoadingEnabled = false;
             //databaseName是connectionString的name
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<SaidDbContext>());//每次重新生成Model的时候重置数据库
+
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

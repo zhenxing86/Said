@@ -23,6 +23,12 @@ namespace Said.Service
         /// <returns></returns>
         IEnumerable<Article> GetByKeywords(Page page, string keywords);
 
+        /// <summary>
+        /// 获取所有文章的文件名称
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<string> GetFileNames();
+
 
     }
     /// <summary>
@@ -51,7 +57,7 @@ namespace Said.Service
                                         || a.SSummary.Contains(keywords)
                                             || a.SContext.Contains(keywords)
                                                 || a.STag.Contains(keywords),
-                                a => a.SDate);
+                                a => a.Date);
             //return from a in base.Context.Article
             //                    join c in Context.Classify on a.ClassifyId equals c.ClassifyId
             //                    where a.STitle.Contains(keywords) || a.SSummary.Contains(keywords) || a.SContext.Contains(keywords) || a.STag.Contains(keywords)
@@ -69,5 +75,16 @@ namespace Said.Service
             //                    };
         }
 
+
+
+        /// <summary>
+        /// 获取所有文章的文件名称
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<string> GetFileNames()
+        {
+            return from m in base.Context.Article
+                   select m.SName;
+        }
     }
 }

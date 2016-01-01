@@ -18,7 +18,8 @@
         'popup': ['avalon/plug/popup'],
         'bsTable-cn': ['bootstrap/bootstrap-table/bootstrap-table-zh-CN'],
         'bs-datetimepicker': ['bootstrap/bootstrap-datetimepicker/bootstrap-datetimepicker'],
-        'echarts': 'echarts-2.1.8/src/echarts-all.min'
+        'echarts': 'echarts-2.1.8/src/echarts-all.min',
+        'sweetalert': '/Content/Widget/sweetalert/sweetalert.min'
     },
     packages: [
             {

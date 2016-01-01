@@ -186,7 +186,7 @@
                     return Source.image + imgName;
                 }
             }
-        require(['jquery', 'avalon', 'so', 'showMsg', 'dialog', 'avalonUpload', 'bs-datetimepicker', 'source'], function ($, avalon, _, showMsg, dialog, upload) {
+        require(['said', 'jquery', 'avalon', 'so', 'showMsg', 'dialog', 'avalonUpload', 'bs-datetimepicker', 'source'], function (said, $, avalon, _, showMsg, dialog, upload) {
             $(function () {
                 'use strict';
                 //_.Database('back.Music').clear();
@@ -282,7 +282,6 @@
                                     Image: SelectImageData
                                 }));
                                 vmSong.reset();
-
                             } else {
                                 showMsg('服务器返回异常：' + result.msg, showMsg.ERROR, true);
                             }
@@ -365,8 +364,7 @@
                 }));
 
                 //选择图片
-                var SelectImageData = null;
-
+                var SelectImageData = database.val('selectImage');
                 var _songImageDialog = $.source({
                     loadUrl: Action.GetImagesList,//'/Back/Source/GetImagesList'
                     path: Source.image,
@@ -383,11 +381,11 @@
                             vmSong.IName = data.IFileName;
                             vmSong.ImagePath = imgSrc;
                             vmSong.ImageId = data.ImageId;
-                            database.val('ImageId', data.ImageId).val('IName', data.IFileName).val('ImagePath', imgSrc);
+                            database.val('ImageId', data.ImageId).val('IName', data.IFileName).val('ImagePath', imgSrc).val('selectImage', SelectImageData);
                         } else {
                             SelectImageData = null;
                             vmSong.IName = vmSong.ImagePath = '';
-                            database.val('ImageId', '').val('IName', '').val('ImagePath', '');
+                            database.val('ImageId', '').val('IName', '').val('ImagePath', '').val('selectImage', '');
                         }
                     }
                 });

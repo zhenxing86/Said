@@ -69,7 +69,7 @@
     .thumbnail {
         overflow: hidden;
         margin-bottom: 0;
-        cursor: pointer;
+        /*cursor: pointer;*/
     }
 
 
@@ -127,12 +127,16 @@
     border-color: #563d7c;
     color: #563d7c;
     width: 200px;
-    display: block;
-
+    /*display: block;*/
     &:hover, &:focus {
         background-color: #563d7c;
         color: #FFF;
     }
+}
+
+.longBtn {
+    padding-left: 60px;
+    padding-right: 60px;
 }
 
 .said-priview {
@@ -158,6 +162,7 @@
 .submit-container {
     padding: 20px 0 30px;
     border-top: 1px dashed #929596;
+    text-align: center;
 }
 
 .panel-subTitle {
