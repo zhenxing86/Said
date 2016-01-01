@@ -1,10 +1,12 @@
-﻿using Said.Domain.Said.Data;
+﻿using PagedList;
+using Said.Domain.Said.Data;
 using Said.IServices;
 using Said.Models;
 using Said.Models.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,6 +30,13 @@ namespace Said.Service
         /// </summary>
         /// <returns></returns>
         IEnumerable<string> GetFileNames();
+
+
+        /// <summary>
+        /// 贪婪分页查询
+        /// </summary>
+        /// <returns></returns>
+        IPagedList<Article> FindByDateDesc(Page page, Expression<Func<Article, bool>> where, Expression<Func<Article, DateTime>> order);
 
 
     }
@@ -85,6 +94,19 @@ namespace Said.Service
         {
             return from m in base.Context.Article
                    select m.SName;
+        }
+
+
+
+        /// <summary>
+        /// 贪婪分页查询
+        /// </summary>
+        /// <returns></returns>
+        public IPagedList<Article> FindByDateDesc(Page page, Expression<Func<Article, bool>> where, Expression<Func<Article, DateTime>> order)
+        {
+            var results = Context.Article.Include("Image.Song").OrderByDescending(order).Where(where).GetPage(page).ToList();
+            int total = Context.Article.Count(where);
+            return new StaticPagedList<Article>(results, page.PageNumber, page.PageSize, total);
         }
     }
 }

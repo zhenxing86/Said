@@ -118,8 +118,11 @@ namespace Said.Controllers.Filters
                 if (UserApplication.Add(user) > 0)
                 {
                     cookie.Name = "user";
-                    cookie.Values.Add("id", userId);
-                    context.Request.Cookies.Add(cookie);
+                    cookie.Value = userId;
+                    //cookie.Values.Add("id", userId);
+                    cookie.Path = "/";
+                    cookie.Expires = DateTime.Now.AddYears(1);
+                    context.Response.Cookies.Add(cookie);
                 }
             }
             else

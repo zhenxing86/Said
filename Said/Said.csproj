@@ -145,6 +145,7 @@
     <Compile Include="Controllers\Filters\AdminFilterAttribute.cs" />
     <Compile Include="Controllers\Filters\UserFilterAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SaidController.cs" />
     <Compile Include="Controllers\SourceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -290,6 +291,7 @@
     <Content Include="Content\Images\code-bg.jpg" />
     <Content Include="Content\Images\github.png" />
     <Content Include="Content\Images\header-bg.jpg" />
+    <Content Include="Content\Images\bg\saidbg.jpg" />
     <Content Include="Content\Images\icon-common.png" />
     <Content Include="Content\Images\icon-player.png" />
     <Content Include="Content\Images\icons\default.png" />
@@ -332,8 +334,8 @@
     <Content Include="Content\Images\UEDImg\35a85edf8db1cb136cd67398dd54564e93584bf9.jpg" />
     <Content Include="Content\Images\UEDImg\360wallpaper.jpg" />
     <Content Include="Content\Images\UEDImg\5623.jpg" />
-    <Content Include="Content\Images\UEDImg\6033.jpg" />
-    <Content Include="Content\Images\UEDImg\6036.jpg" />
+    <Content Include="Content\Images\bg\6033.jpg" />
+    <Content Include="Content\Images\bg\6036.jpg" />
     <Content Include="Content\Images\UEDImg\8f366562-afce-4f15-baf3-3bccdcf51aa6.jpg" />
     <Content Include="Content\Images\UEDImg\demo-img4.jpg" />
     <Content Include="Content\Images\UEDImg\demo-img5.jpg" />
@@ -342,18 +344,18 @@
     <Content Include="Content\Images\UEDImg\demoImg2.jpg" />
     <Content Include="Content\Images\UEDImg\demoImg3.jpg" />
     <Content Include="Content\Images\UEDImg\HanaleiTaro_ZH-CN9644686871_1366x768.jpg" />
-    <Content Include="Content\Images\UEDImg\Horseshoe-Bend-US.jpg" />
+    <Content Include="Content\Images\UEDImg\saidBg.jpg" />
     <Content Include="Content\Images\UEDImg\MacWinLinux.png" />
     <Content Include="Content\Images\UEDImg\MacWinLinux2.png" />
     <Content Include="Content\Images\UEDImg\Paris-France.jpg" />
-    <Content Include="Content\Images\UEDImg\Reine-Norway.jpg" />
+    <Content Include="Content\Images\bg\Reine-Norway.jpg" />
     <Content Include="Content\Images\UEDImg\said-banner.jpg" />
     <Content Include="Content\Images\UEDImg\SutjezkaNP_ZH-CN10008358917_1366x768.jpg" />
     <Content Include="Content\Images\UEDImg\test.png" />
     <Content Include="Content\Images\UEDImg\Tuscany-Italy3.jpg" />
     <Content Include="Content\Images\UEDImg\TuscanyItaly1.jpg" />
     <Content Include="Content\Images\UEDImg\TuscanyItaly.jpg" />
-    <Content Include="Content\Images\UEDImg\20150521092620.jpg" />
+    <Content Include="Content\Images\bg\20150521092620.jpg" />
     <Content Include="Content\Images\UEDImg\20140730222859.jpg" />
     <Content Include="Content\Images\UEDImg\Venice-Italy3.jpg" />
     <Content Include="Content\Images\UEDImg\X.js.png" />
@@ -558,6 +560,9 @@
     <Content Include="Content\Back\Style\pageConfig.css.map" />
     <Content Include="Content\Back\Style\sass\addSaid.scss" />
     <Content Include="Content\Back\Style\addSaid.css.map" />
+    <Content Include="Views\Said\Article.cshtml" />
+    <Content Include="Content\Style\sass\saidlist.scss" />
+    <Content Include="Views\Said\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

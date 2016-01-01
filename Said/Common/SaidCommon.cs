@@ -27,5 +27,35 @@ namespace Said
             get { return CreateId(); }
         }
 
+
+        /// <summary>
+        /// 将时间转换为本地文本（2016-01-01 22:31:54 => 昨天 22:00）
+        /// </summary>
+        /// <returns></returns>
+        public static string DateToLocal(DateTime date)
+        {
+            TimeSpan timespan = DateTime.Now - date;
+            if (timespan.TotalSeconds < 60)
+            {
+                return "刚才";
+            }
+            if (timespan.TotalMinutes < 60)
+            {
+                return "1小时";
+            }
+            if (timespan.TotalDays < 1 && timespan.Days < 1)
+            {
+                return date.ToString("今天 HH:mm");
+            }
+            if (timespan.TotalDays < 2 && timespan.Days < 2)
+            {
+                return date.ToString("昨天 HH:mm");
+            }
+            if (timespan.TotalDays < 3 && timespan.Days < 3)
+            {
+                return date.ToString("前天 HH:mm");
+            }
+            return date.ToString("yyyy-MM-dd HH:mm");
+        }
     }
 }
