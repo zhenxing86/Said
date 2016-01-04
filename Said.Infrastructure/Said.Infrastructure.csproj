@@ -111,6 +111,7 @@
       <DependentUpon>SaidModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Said.Models\Models\User.cs" />
+    <Compile Include="Said.Models\Models\UserLike.cs" />
     <Compile Include="Said.Models\Models\UserRecord.cs" />
     <Compile Include="Said.Models\Models\UserSession.cs" />
   </ItemGroup>

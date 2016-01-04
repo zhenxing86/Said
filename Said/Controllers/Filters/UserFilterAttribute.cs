@@ -109,15 +109,15 @@ namespace Said.Controllers.Filters
         /// <param name="context"></param>
         private void Statistics(HttpContext context)
         {
-            HttpCookie cookie = context.Request.Cookies.Get("user");
+            HttpCookie cookie = context.Request.Cookies.Get("uid");
             string userId = string.Empty;
-            if (cookie == null || cookie.Values["id"] == null)//没有用户ID，创建
+            if (cookie == null || cookie.Value == null)//没有用户ID，创建
             {
-                cookie = new HttpCookie("user");
+                cookie = new HttpCookie("uid");
                 User user = new User { UserID = userId = Guid.NewGuid().ToString().Replace("-", ""), EMail = string.Empty, Name = string.Empty, Date = DateTime.Now };
                 if (UserApplication.Add(user) > 0)
                 {
-                    cookie.Name = "user";
+                    cookie.Name = "uid";
                     cookie.Value = userId;
                     //cookie.Values.Add("id", userId);
                     cookie.Path = "/";
@@ -127,8 +127,9 @@ namespace Said.Controllers.Filters
             }
             else
             {
-                userId = cookie.Values["id"];//【【【【【【【【【【【TODO： 这里要验证cookie的合法性】】】】】】】】】】
+                userId = cookie.Value;//【【【【【【【【【【【TODO： 这里要验证cookie的合法性】】】】】】】】】】
             }
+            context.Session["userId"] = userId;
             AddRecord(userId, context);
         }
         #endregion

@@ -116,14 +116,14 @@
     max-height: 101px;
     overflow: hidden;
 
+
     a {
         display: block;
-        font-size: 2em;
+        font-size: 35px;
         color: #666;
         line-height: 1.2;
-        font-weight: 200;
+        letter-spacing: 0;
         text-align: center;
-
         &:hover {
             color: #43b4ef;
         }

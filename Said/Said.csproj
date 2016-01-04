@@ -145,6 +145,7 @@
     <Compile Include="Controllers\Filters\AdminFilterAttribute.cs" />
     <Compile Include="Controllers\Filters\UserFilterAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\SaidController.cs" />
     <Compile Include="Controllers\SourceController.cs" />
     <Compile Include="Global.asax.cs">
@@ -362,12 +363,16 @@
     <Content Include="Content\Images\work_tool_001.png" />
     <Content Include="Content\JavaScript\jquery-1.11.1.js" />
     <Content Include="Content\JavaScript\jquery-2.1.1.js" />
+    <Content Include="Content\JavaScript\require.config.js" />
     <Content Include="Content\JavaScript\said.js" />
+    <Content Include="Content\JavaScript\said\global.js" />
     <Content Include="Content\Style\blog.css" />
     <Content Include="Content\Style\font-awesome.min.css" />
     <Content Include="Content\Style\Global.css" />
     <Content Include="Content\Style\index.css" />
     <Content Include="Content\Style\layout.css" />
+    <Content Include="Content\Style\projects.css" />
+    <Content Include="Content\Style\saiddetail.css" />
     <Content Include="Content\Style\saidList.css" />
     <Content Include="Content\Widget\sweetalert\sweetalert-dev.js" />
     <Content Include="Content\Widget\sweetalert\sweetalert.css" />
@@ -563,6 +568,13 @@
     <Content Include="Content\Style\sass\saidlist.scss" />
     <Content Include="Views\Said\Index.cshtml" />
     <Content Include="Content\Style\sass\saiddetail.scss" />
+    <Content Include="Content\Style\sass\index.scss" />
+    <Content Include="Content\Style\sass\projects.scss" />
+    <Content Include="Views\Projects\Index.cshtml" />
+    <Content Include="Content\Style\index.css.map" />
+    <Content Include="Content\Style\projects.css.map" />
+    <Content Include="Content\Style\saiddetail.css.map" />
+    <Content Include="Content\Style\saidList.css.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

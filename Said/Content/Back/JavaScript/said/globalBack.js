@@ -1,7 +1,5 @@
-﻿define('said', ['so', 'jquery', 'avalon'], function (so, $, avalon) {
-    var document = window.document,
-        said = {},
-    //绑定导航
+﻿require(['so', 'jquery'], function (so, $) {
+    var     //绑定导航
     bindNavigation = function ($content, keyClass, openClass) {
         $content.find('.' + keyClass).each(function () {
             var $this = $(this);
@@ -17,8 +15,7 @@
     $(function () {
         bindNavigation($('#example-navbar-collapse'), 'complex', 'open');
 
-        var $body = $(document.body),
-            $saidMaskContainer = $('#said-page-mask'),//全局蒙板
+        var $saidMaskContainer = $('#said-page-mask'),//全局蒙板
             $saidMaskBox = $('#said-mask-box'),//显示的蒙板
             $maskContent = $('.said-mask-content'),//要放到全局蒙板下面所有的类
             $saidHelpBox = $('#said-help');//said全局帮助
@@ -33,7 +30,10 @@
             $saidMaskContainer.fadeOut(200);
         });
     });
-
+});
+define('said', ['so', 'jquery'], function (so, $) {
+    var document = window.document,
+        said = {};
 
     /*************************************************************************************
                                 和业务相关的通用逻辑（注册在said命名空间）

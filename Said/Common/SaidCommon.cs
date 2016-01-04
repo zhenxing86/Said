@@ -56,6 +56,33 @@ namespace Said
         }
 
 
+        /// <summary>
+        /// 将时间转换为本地星期
+        /// </summary>
+        /// <returns></returns>
+        public static string DateToLocalWeek(DateTime date)
+        {
+            switch (date.DayOfWeek)
+            {
+                case DayOfWeek.Friday:
+                    return "星期五";
+                case DayOfWeek.Monday:
+                    return "星期一";
+                case DayOfWeek.Saturday:
+                    return "星期六";
+                case DayOfWeek.Sunday:
+                    return "星期天";
+                case DayOfWeek.Thursday:
+                    return "星期四";
+                case DayOfWeek.Tuesday:
+                    return "星期二";
+                case DayOfWeek.Wednesday:
+                    return "星期三";
+            }
+            return string.Empty;
+        }
+
+
         static DateTime FixedkDate = new DateTime(2016, 1, 1, 0, 0, 0);
         /// <summary>
         /// 转换秒数到时间
@@ -65,5 +92,7 @@ namespace Said
         {
             return FixedkDate.AddSeconds(duration).ToString("mm:ss");
         }
+
+
     }
 }

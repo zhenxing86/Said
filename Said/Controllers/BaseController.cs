@@ -1,4 +1,6 @@
-﻿using Said.Controllers.Filters;
+﻿using Said.Application;
+using Said.Controllers.Filters;
+using Said.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +17,27 @@ namespace Said.Controllers
         {
             //System.Diagnostics.Debug.Write(ConfigEnum.SourceDataIP);
         }
+
+        /// <summary>
+        /// 获取当前用户的完整信息
+        /// </summary>
+        /// <returns></returns>
+        protected User GetUser()
+        {
+            //从数据库中查询
+            string userId = GetUserId();
+            return UserApplication.Find(userId);
+        }
+
+        /// <summary>
+        /// 获取当前用户的用户Id
+        /// </summary>
+        /// <returns></returns>
+        protected string GetUserId()
+        {
+            return Session["userId"].ToString();
+        }
+
 
         #region Other
 

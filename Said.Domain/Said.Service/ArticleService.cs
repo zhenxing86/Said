@@ -39,6 +39,13 @@ namespace Said.Service
         IPagedList<Article> FindByDateDesc(Page page, Expression<Func<Article, bool>> where, Expression<Func<Article, DateTime>> order);
 
 
+        /// <summary>
+        /// 贪婪获取指定个数的文章列表
+        /// </summary>
+        /// <param name="top">要获取的个数</param>
+        /// <returns></returns>
+        IEnumerable<Article> GetByTop(int top);
+
     }
     /// <summary>
     /// 听说（文章）服务
@@ -98,6 +105,8 @@ namespace Said.Service
 
 
 
+
+
         /// <summary>
         /// 贪婪分页查询
         /// </summary>
@@ -107,6 +116,17 @@ namespace Said.Service
             var results = Context.Article.Include("Image").Include("Song.Image").OrderByDescending(order).Where(where).GetPage(page).ToList();
             int total = Context.Article.Count(where);
             return new StaticPagedList<Article>(results, page.PageNumber, page.PageSize, total);
+        }
+
+
+        /// <summary>
+        /// 贪婪获取指定个数的文章列表
+        /// </summary>
+        /// <param name="top">要获取的个数</param>
+        /// <returns></returns>
+        public IEnumerable<Article> GetByTop(int top)
+        {
+            return Context.Article.Include("Image").OrderByDescending(m => m.Date).Take(top);
         }
     }
 }

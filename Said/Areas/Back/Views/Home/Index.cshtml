@@ -117,21 +117,6 @@
 }
 @section FootJs{
     <script>
-        require.config({
-            packages: [
-            {
-                name: 'echarts',
-                location: 'echarts-2.1.8/src',
-                main: 'echarts'
-            },
-            {
-                name: 'zrender',
-                //location: 'http://ecomfe.github.io/zrender/src',
-                location: 'zrender-master/src',
-                main: 'zrender'
-            }
-            ]
-        });
         var option = {
             title: {
                 text: '2014-11-15',
@@ -183,7 +168,7 @@
                 }
             ]
         };
-        require(['echarts', 'echarts/chart/line'], function (ec) {
+        require(['echarts'], function (ec) {
             var myChart = ec.init(document.getElementById('uvChart'));
             myChart.setOption(option);
         });

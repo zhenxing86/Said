@@ -5,6 +5,7 @@
     string SourceSaidImage = Said.Common.ConfigInfo.SourceSaidPath;
     string SourceMusicImage = Said.Common.ConfigInfo.SourceMusicImagePath;
     string SourceMusicDir = Said.Common.ConfigInfo.SourceMusicPath;
+    bool userLike = (bool)ViewData["userLike"];
 }
 <div style="width: 0%;" class="read-state" id="said-readState"></div>
 <section id="content">
@@ -22,8 +23,8 @@
                         <h2 class="music-song-name">@Model.Song.SongName</h2>
                     </li>
                     <li>
-                        <div class="music-song-summary"><a title="Artist" class="music-song-link" target="_blank" href="http://www.sogou.com/web?query=witest&ie=utf8">@Model.Song.SongArtist</a></div>
-                        <div class="music-song-summary"><a title="Album" class="music-song-link" target="_blank" href="http://www.sogou.com/web?query=The+Only+Exception&ie=utf8">@Model.Song.SongAlbum</a></div>
+                        <div class="music-song-summary"><a title="Artist" class="music-song-link" target="_blank" href="http://www.sogou.com/web?query=@Url.Encode(Model.Song.SongArtist)&ie=utf8">@Model.Song.SongArtist</a></div>
+                        <div class="music-song-summary"><a title="Album" class="music-song-link" target="_blank" href="http://www.sogou.com/web?query=@Url.Encode(Model.Song.SongAlbum)&ie=utf8">@Model.Song.SongAlbum</a></div>
                     </li>
                 </ul>
             </dd>
@@ -59,7 +60,7 @@
 
             <ul class="blog-info">
                 <li class="blog-info-date"><time>@Model.Date.ToString("yyyy/MM/dd HH:mm")</time></li>
-                <li class="blog-info-like"><a href="javascript:;" title="我喜欢" id="said-like"><i class="fa fa-heart"></i></a></li>
+                <li class="blog-info-like"><a href="javascript:;" class="@(userLike?"likeIt":string.Empty)" data-like="@(userLike?"true":"false")" title="我喜欢" id="said-like"><i class="fa fa-heart"></i><span class="like-sum" id="likeCount">@Model.Likes</span></a></li>
                 <li><a href="/Said" class="blog-info-more">查看更多我的文章</a></li>
                 @*<li class="blog-info-PV" title="浏览"><span>15</span></li>*@
             </ul>
@@ -97,7 +98,8 @@
     <script>
         var musicFilePath = "@SourceMusicDir@Model.Song.SongFileName",//音乐加载路径
             //音乐时长
-            maxDuration = "@Model.Song.Duration";
+            maxDuration = "@Model.Song.Duration",
+            saidId = "@Model.SaidId";
     </script>
     <script>
         require(['jquery', 'so'], function ($, so) {
@@ -176,9 +178,28 @@
             });
             //so.throttle(, 200)
 
-            $like.on('click', function () {
+            if (!$like.data('like')) {//用户没有like这篇文章
+                var lockSubmit = false;
+                $like.on('click', function () {
+                    if (lockSubmit) return;
+                    lockSubmit = true;
+                    $.ajax({
+                        url: '/Said/LikeArticle',
+                        type: "post",
+                        dataType: "json",
+                        data: { id: saidId } //注意对内容进行编码
+                    }).done(function (data) {
+                        if (data.code === 0) {
+                            $like.addClass('likeIt');
+                            var $likeCount = $('#likeCount');
+                            $likeCount.html(parseInt($likeCount.html()) + 1);
+                        }
 
-            })
+                    }).fail(function () {
+                        lockSubmit = false;
+                    });
+                })
+            }
         });
     </script>
 }

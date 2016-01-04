@@ -1,4 +1,4 @@
-﻿html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; list-style: none; }
+﻿html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; list-style: none; -webkit-font-smoothing: antialiased; }
 h1, h2, h3, h4, h5, h6 { font-weight: 200; color: inherit; font-family: inherit; }
 body, button, input, select, textarea { font: 14px/24px "Helvetica Neue",Helvetica,Arial,'Microsoft Yahei',sans-serif; }
 button, input, select, textarea { font-size: 100%; }
@@ -84,7 +84,7 @@ input { border: 1px solid #929596; font-family: inherit; padding: 2px 5px; box-s
     #nav-flip li { float: left; }
     #nav-flip a { display: block; width: 70px; text-align: center; height: 48px; line-height: 48px; color: #606060; }
         #nav-flip a:hover { color: #59c6ff; }
-    #nav-flip .nav-active { color: #028cd3 !important; cursor: default; }
+.nav-active a { color: #59c6ff !important; }
 /*search*/
 #said-search { overflow: hidden; padding-top: 11px; width: 231px; position: relative; left: 0px; height: 37px; }
 #said-search-btn { background: url("/Content/Images/nav-icon_search.png") no-repeat; height: 28px; width: 50px; }

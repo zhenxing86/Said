@@ -37,23 +37,21 @@
                             <div class="said-box">
                                 <h2 class="blog-title" title="@List[i].STitle"><a href="/Said/@(List[i].SaidId).html">@List[i].STitle</a></h2>
                                 <div class="blog-summary">
-                                    <div class="blog-preview">
-                                        @List[i].SSummary
-                                    </div>
+                                    <div class="blog-preview">@(new HtmlString(List[i].SSummary))</div>
                                 </div>
                                 <footer class="blog-footer">
                                     <div class="blog-music">
                                         <div class="blog-music-img">
                                             <div class="music-ring"></div>
-                                            <img src="@(SourceMusicImage)@(List[i].Song.Image.IFileName)" alt="test" title="paramore" />
+                                            <img src="@(SourceMusicImage)@(List[i].Song.Image.IFileName)" alt="test" title="@(List[i].Song.SongArtist)" />
                                         </div>
                                         <ul class="blog-music-info">
-                                            <li title="Artist">@List[i].Song.SongArtist</li>
-                                            <li title="Album">@List[i].Song.SongAlbum</li>
+                                            <li title="song">@List[i].Song.SongName</li>
+                                            <li title="artist">@List[i].Song.SongArtist</li>
                                         </ul>
                                     </div>
                                     <div class="blog-more-info">
-                                        <span title="like" class="blog-info fa fa-heart-o"><i>@List[i].SPV</i></span>
+                                        <span title="like" class="blog-info fa fa-heart-o"><i>@List[i].Likes</i></span>
                                         <time>@Said.SaidCommon.DateToLocal(List[i].Date)</time>
                                     </div>
                                 </footer>

@@ -391,9 +391,14 @@
                         }
                         //said.dialog(converter.makeHtml(vmSaid.sContext));
                         vmSaid.submitState = true;
+
+                        var sSummary = vmSaid.sSummary.split('\n').map(function (item) {
+                            return '<p>' + item + '</p>';
+                        }).join('');
+
                         said.ajax(Action.form, {
                             'STitle': encode(vmSaid.sTitle),
-                            'SSummary': encode(vmSaid.sSummary),
+                            'SSummary': encode(sSummary),
                             'SHTML': encode(converter.makeHtml(vmSaid.sContext)),
                             'SReprint': encode(vmSaid.sReprint || false),
                             'SScript': encode(vmSaid.sScript),

@@ -18,7 +18,7 @@
     }
     <meta name="author" content="linkFly" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-    @*<meta http-equiv-"x-ua-compatible" content="IE =9" />*@ 
+    @*<meta http-equiv-"x-ua-compatible" content="IE =9" />*@
     <title>@ViewBag.Title</title>
     <link href="@Url.Content("~/Content//Style/Global.css?v=1.0")" rel="stylesheet">
     <link href="@Url.Content("~/Content/Style/font-awesome.min.css?v=1.0")" rel="stylesheet">
@@ -56,11 +56,12 @@
                     </div>
                     <nav id="nav">
                         <ul id="nav-flip">
-                            <li><a href="/" class="@(NavigatorIndex ==0 ? "nav-active" : "")">首页</a></li>
-                            <li><a href="javascript:void(0);" class="@(NavigatorIndex ==1 ? "nav-active" : "")">blog</a></li>
-                            <li><a href="/Said" class="@(NavigatorIndex ==2 ? "nav-active" : "")">听说</a></li>
-                            <li><a href="javascript:void(0);" class="@(NavigatorIndex ==3 ? "nav-active" : "")">实验室</a></li>
-                            <li><a href="javascript:void(0);" class="@(NavigatorIndex ==4 ? "nav-active" : "")">关于</a></li>
+                            <li class="@(NavigatorIndex ==0 ? "nav-active" : "")"><a href="/">首页</a></li>
+                            <li class="@(NavigatorIndex ==1 ? "nav-active" : "")"><a href="javascript:void(0);">blog</a></li>
+                            <li class="@(NavigatorIndex ==2 ? "nav-active" : "")"><a href="/Said">听说</a></li>
+                            <li class="@(NavigatorIndex ==3 ? "nav-active" : "")"><a href="/Projects">项目</a></li>
+                            <li class="@(NavigatorIndex ==4 ? "nav-active" : "")"><a href="javascript:void(0);">实验室</a></li>
+                            <li class="@(NavigatorIndex ==5 ? "nav-active" : "")"><a href="javascript:void(0);">关于</a></li>
                         </ul>
                         @*<div id="said-search-con" style="width: 50px;">
                                 <div id="said-search">
@@ -122,6 +123,7 @@
     }
     <script src="@Url.Content("~/Content/JavaScript/jQuery-2.1.1.js?v=1.0")"></script>
     <script src="@Url.Content("~/Content/Back/JavaScript/so/so.js?v=1.0")"></script>
+    <script src="@Url.Content("~/Content/JavaScript/said/global.js?v=1.0")"></script>
     @{
         if (IsSectionDefined("FootJs"))
         {

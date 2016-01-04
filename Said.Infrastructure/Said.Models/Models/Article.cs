@@ -130,6 +130,11 @@ namespace Said.Models
         public int IsPrivate { get; set; }
 
         /// <summary>
+        /// Like数
+        /// </summary>
+        public int Likes { get; set; }
+
+        /// <summary>
         /// 歌曲ID
         /// </summary>
         public string SongId { get; set; }

@@ -34,6 +34,17 @@ namespace Said.Application
             return service.Submit();
         }
 
+        /// <summary>
+        /// 修改一篇文章
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public static int Update(Article model)
+        {
+            Context.Update(model);
+            return service.Submit();
+        }
+
 
         #region 逻辑
         /// <summary>
@@ -112,6 +123,16 @@ namespace Said.Application
         public static IPagedList<Article> Find(Models.Data.Page page)
         {
             return Context.GetPageDesc(page, m => m.STitle != null, m => m.Date);
+        }
+
+        /// <summary>
+        /// 贪婪获取指定个数的文章列表
+        /// </summary>
+        /// <param name="top">要获取的个数</param>
+        /// <returns></returns>
+        public static IEnumerable<Article> GetByTop(int top)
+        {
+            return Context.GetByTop(top);
         }
 
         /// <summary>

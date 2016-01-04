@@ -22,9 +22,9 @@ namespace Said
                 name: "said",
                 url: "said/{pageIndex}",
                defaults: new { controller = "Said", action = "Index", pageIndex = UrlParameter.Optional },
+               constraints: new { pageIndex = @"[\d]+" },
                namespaces: new string[] { "Said.Controllers" }
             );
-
             routes.MapRoute(
                 name: "Back",
                 url: "Back/{controller}/{action}/{id}",
